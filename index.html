@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>أكاديمية البيان | نشاط صيفي ممتع ومفيد</title>
-    <!-- أيقونة الموقع (Favicon) - استبدلي الرابط بصورة الشعار الخاصة بك -->
+    <!-- أيقونة الموقع (Favicon) -->
     <link rel="icon" type="image/jpg" sizes="32x32" href="./img/logo.jpg">
     <meta name="description" content="أكاديمية البيان : تحفيظ قرآن، تعليم كمبيوتر، رسم وفنون، Reading English للطلاب من الروضة حتى الإعدادي. نشاط صيفي احترافي 2026.">
     <meta name="keywords" content="أكاديمية البيان, تحفيظ قرآن أون لاين, تعليم كمبيوتر للأطفال, رسم وفنون, تعليم إنجليزي, نشاط صيفي">
@@ -12,14 +12,14 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://saradrwish.github.io/albayan/">
     <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="أكاديمية البيان أون لاين - النشاط الصيفي 2026">
+    <meta property="og:title" content="أكاديمية البيان - النشاط الصيفي 2026">
     <meta property="og:description" content="برامج تعليمية ممتعة: قرآن، كمبيوتر، فنون، إنجليزي. سجل الآن!">
     <meta property="og:url" content="https://saradrwish.github.io/albayan/">
     <meta property="og:type" content="website">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="أكاديمية البيان ">
-    <meta name="twitter:description" content="نشاط صيفي ممتع ومفيد ">
+    <meta name="twitter:title" content="أكاديمية البيان">
+    <meta name="twitter:description" content="نشاط صيفي ممتع ومفيد">
     <!-- Font Awesome & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -34,10 +34,10 @@
             background-color: #f9fafc;
             color: #333;
             line-height: 1.7;
+            scroll-behavior: smooth;
         }
 
-        
-         ::selection {
+        ::selection {
             color: var(--primary);
             background: var(--secondary);
         }
@@ -45,32 +45,30 @@
             width: 12px;
         }
         ::-webkit-scrollbar-track {
-            background: #f0f7f8;   /* لون مسار الشريط */
+            background: #f0f7f8;
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb {
-            background: #11ABB1;    /* لون المقبض (الأزرق الأساسي) */
+            background: #11ABB1;
             border-radius: 10px;
             border: 2px solid #f0f7f8;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #EDB519;    /* عند المرور عليه يصبح ذهبي */
+            background: #EDB519;
         }
-        /* لفيرفكس (Firefox) */
         * {
             scrollbar-width: auto;
             scrollbar-color: #11ABB1 #f0f7f8;
         }
-        /* ===== نهاية تخصيص شريط التمرير ===== */
 
-        /* الألوان المخصصة حسب طلبك */
+        /* الألوان المخصصة */
         :root {
             --primary: #11ABB1;
             --secondary: #EDB519;
             --accent: #898B98;
             --light-bg: #f0f7f8;
         }
-       
+
         .top-bar {
             background-color: var(--primary);
             color: white;
@@ -91,9 +89,10 @@
             padding: 20px 0;
             border-bottom: 2px solid var(--secondary);
         }
-        .logo img{
-           display: inline-block;
-           width: 6rem;
+        .logo img {
+            display: inline-block;
+            width: 6rem;
+            vertical-align: middle;
         }
         .logo h1 {
             color: var(--primary);
@@ -131,33 +130,78 @@
         .btn:hover {
             background: #d4a017;
             transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(237,181,25,0.2);
         }
-        /* زر الواتساب العائم */
-        .whatsapp-float {
+
+        .float-group {
             position: fixed;
-            bottom: 20px;
             left: 20px;
-            background-color: #25D366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            text-align: center;
-            font-size: 35px;
-            box-shadow: 2px 2px 3px #999;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
             z-index: 100;
+        }
+        .float-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .whatsapp-float {
+            background-color: #25D366;
+            color: white;
+            font-size: 28px;
             animation: shake 1.5s ease infinite;
         }
         .whatsapp-float:hover {
             transform: scale(1.1);
             background-color: #128C7E;
         }
-        /* حركة اهتزاز خفيفة لزر الواتساب */
+        .facebook-float {
+            background-color: #1877F2;
+            color: white;
+            font-size: 24px;
+        }
+        .facebook-float:hover {
+            transform: scale(1.1);
+            background-color: #0e5ac0;
+        }
+        /* زر العودة للأعلى */
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 22px;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+        }
+        .scroll-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .scroll-top:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
         @keyframes shake {
             0% { transform: translate(0, 0) rotate(0deg); }
             20% { transform: translate(2px, -2px) rotate(1deg); }
@@ -166,6 +210,7 @@
             80% { transform: translate(-2px, -2px) rotate(-1deg); }
             100% { transform: translate(0, 0) rotate(0deg); }
         }
+
         .hero {
             background: linear-gradient(135deg, #eef7f8 0%, #ffffff 100%);
             padding: 80px 0;
@@ -199,14 +244,16 @@
             font-size: 36px;
             color: var(--primary);
             margin-bottom: 60px;
+            position: relative;
         }
         .section-title:after {
             content: '';
             display: block;
-            width: 70px;
+            width: 80px;
             height: 3px;
             background: var(--secondary);
             margin: 15px auto 0;
+            border-radius: 5px;
         }
         .services-grid {
             display: grid;
@@ -225,7 +272,7 @@
         .service-card:hover {
             border-bottom-color: var(--primary);
             transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 35px rgba(0,0,0,0.1);
         }
         .service-card i {
             font-size: 48px;
@@ -297,6 +344,7 @@
         .about-text li i {
             color: var(--primary);
         }
+        /* نموذج التسجيل الفعال */
         .contact {
             padding: 80px 0;
             background: var(--light-bg);
@@ -307,7 +355,7 @@
             background: white;
             padding: 40px;
             border-radius: 28px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
         }
         .form-group {
             margin-bottom: 20px;
@@ -342,18 +390,16 @@
             color: var(--secondary);
             transform: translateY(-3px);
         }
+
         @media (max-width: 768px) {
             .hero h2 { font-size: 32px; }
             .about-content { grid-template-columns: 1fr; }
             .header { flex-direction: column; text-align: center; gap: 15px; }
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                font-size: 28px;
-            }
+            .float-btn { width: 45px; height: 45px; font-size: 22px; }
+            .scroll-top { width: 40px; height: 40px; }
         }
     </style>
-    <!-- Structured Data for SEO (Education Organization) -->
+    <!-- Structured Data for SEO -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -386,10 +432,10 @@
     <div class="header">
         <div class="logo">
             <img src="./img/logo-removebg-preview.png" alt="logo">
-            <h1>أكاديمية <span>البيان</span> </h1>
+            <h1>أكاديمية <span>البيان</span></h1>
         </div>
         <div class="contact-info">
-            <div><i class="fas fa-phone-alt"></i> 0591010329</div>
+            <div><a href="https://www.facebook.com/AlbayanSchool2019/" target="_blank"><i class="fab fa-facebook-f"></i></a></div>
             <div><i class="fab fa-whatsapp"></i> واتساب: 0591010329</div>
         </div>
     </div>
@@ -399,7 +445,7 @@
     <div class="container">
         <div class="hero-badge">نشاط صيفي 2026</div>
         <h2>نشاط صيفي ممتع ومفيد!</h2>
-        <p>في أكاديمية البيان أون لاين - برامج متكاملة تجمع بين التحفيظ والمهارات العصرية والإبداع.</p>
+        <p>في أكاديمية البيان - برامج متكاملة تجمع بين التحفيظ والمهارات العصرية والإبداع.</p>
         <a href="#contact" class="btn">سجل ابنك الآن <i class="fas fa-arrow-left"></i></a>
     </div>
 </section>
@@ -459,43 +505,62 @@
                 </ul>
             </div>
             <div>
-                <img src="./img/albayan-img1.jpg" alt="أكاديمية البيان" style="width:100%; border-radius: 24px;">
+                <img src="./img/albayan-img1.jpg" alt="أكاديمية البيان" style="width:100%; border-radius: 24px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
             </div>
         </div>
     </div>
 </section>
 
+<!-- نموذج التسجيل الفعال (يرسل البيانات إلى الواتساب) -->
 <section id="contact" class="contact">
     <div class="container">
         <h2 class="section-title">سجل ابنك/ابنتك الآن</h2>
-        <form class="contact-form" action="#" method="post">
-            <div class="form-group"><input type="text" placeholder="الاسم الكامل للطالب" required></div>
-            <div class="form-group"><input type="tel" placeholder="رقم ولي الأمر" required></div>
+        <form class="contact-form" id="registrationForm">
             <div class="form-group">
-                <select>
+                <input type="text" id="studentName" placeholder="الاسم الكامل للطالب" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" id="parentPhone" placeholder="رقم ولي الأمر" required>
+            </div>
+            <div class="form-group">
+                <select id="stage">
                     <option>المرحلة: الروضة (4-6 سنوات)</option>
                     <option>المرحلة: الابتدائي (6-12 سنة)</option>
                     <option>المرحلة: الإعدادي (12-15 سنة)</option>
                 </select>
             </div>
-            <div class="form-group"><textarea placeholder="ملاحظات أو استفسار..."></textarea></div>
-            <div style="text-align:center"><button type="submit" class="btn">إرسال طلب التسجيل</button></div>
+            <div class="form-group">
+                <textarea id="notes" placeholder="ملاحظات أو استفسار..."></textarea>
+            </div>
+            <div style="text-align:center">
+                <button type="button" class="btn" id="sendWhatsAppBtn">إرسال طلب التسجيل عبر واتساب <i class="fab fa-whatsapp"></i></button>
+            </div>
         </form>
     </div>
 </section>
 
-<!-- زر الواتساب العائم -->
-<a href="https://wa.me/2010591010329" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
+<!-- الأزرار العائمة: فيسبوك فوق الواتساب على اليسار -->
+<div class="float-group">
+    <a href="https://www.facebook.com/AlbayanSchool2019/" class="float-btn facebook-float" target="_blank">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://wa.me/966591010329" class="float-btn whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</div>
+
+<!-- زر العودة للأعلى -->
+<a href="#" class="scroll-top" id="scrollTopBtn">
+    <i class="fas fa-arrow-up"></i>
 </a>
 
 <footer class="footer">
     <div class="container">
         <div class="social-links">
             <a href="https://www.facebook.com/AlbayanSchool2019/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://wa.me/2010591010329" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://wa.me/966591010329" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
-        <p style="margin-top: 15px;">للتواصل عبر الواتساب: 0591010329</p>
+        <!-- <p style="margin-top: 15px;">للتواصل عبر الواتساب: 0591010329</p> -->
         <p>© 2026 أكاديمية البيان . جميع الحقوق محفوظة.</p>
     </div>
 </footer>
@@ -506,6 +571,50 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-GMZPPP5XTW');
+
+  // إرسال بيانات النموذج إلى الواتساب
+  document.getElementById('sendWhatsAppBtn').addEventListener('click', function() {
+      const studentName = document.getElementById('studentName').value.trim();
+      const parentPhone = document.getElementById('parentPhone').value.trim();
+      const stage = document.getElementById('stage').value;
+      const notes = document.getElementById('notes').value.trim();
+
+      if (!studentName) {
+          alert('الرجاء إدخال الاسم الكامل للطالب');
+          return;
+      }
+      if (!parentPhone) {
+          alert('الرجاء إدخال رقم ولي الأمر');
+          return;
+      }
+
+      let message = `*طلب تسجيل جديد في أكاديمية البيان*\n\n`;
+      message += `👤 *اسم الطالب:* ${studentName}\n`;
+      message += `📞 *رقم ولي الأمر:* ${parentPhone}\n`;
+      message += `🎓 *المرحلة:* ${stage}\n`;
+      if (notes) {
+          message += `📌 *ملاحظات:* ${notes}\n`;
+      }
+      message += `\nتم الإرسال من الموقع الإلكتروني لأكاديمية البيان.`;
+
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/966591010329?text=${encodedMessage}`;
+      window.open(whatsappUrl, '_blank');
+  });
+
+  // زر العودة للأعلى
+  const scrollBtn = document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+          scrollBtn.classList.add('show');
+      } else {
+          scrollBtn.classList.remove('show');
+      }
+  });
+  scrollBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 </script>
 
 </body>
