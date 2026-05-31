@@ -69,17 +69,83 @@
             --light-bg: #f0f7f8;
         }
 
+        /* الفقاعات المتحركة */
+        .bubbles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            background: rgba(17, 171, 177, 0.3);
+            border-radius: 50%;
+            animation: floatUp linear infinite;
+            opacity: 0.6;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(0.8);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+
         .top-bar {
             background-color: var(--primary);
             color: white;
             padding: 10px 0;
             text-align: center;
             font-weight: 500;
+            position: relative;
+            z-index: 2;
         }
         .container {
             max-width: 1200px;
             margin: auto;
             padding: 0 20px;
+        }
+        /* الشريط العلوي (Navbar) */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 101;
+            transition: all 0.3s ease;
+        }
+        .navbar.scrolled {
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 15px 0;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 30px;
+        }
+        .nav-links a:hover {
+            color: var(--secondary);
+            background: rgba(237,181,25,0.1);
+            transform: translateY(-2px);
         }
         .header {
             display: flex;
@@ -88,6 +154,9 @@
             flex-wrap: wrap;
             padding: 20px 0;
             border-bottom: 2px solid var(--secondary);
+            position: relative;
+            z-index: 2;
+            background: white;
         }
         .logo img {
             display: inline-block;
@@ -143,8 +212,8 @@
             z-index: 100;
         }
         .float-btn {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -152,12 +221,12 @@
             text-decoration: none;
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            animation: shake 1.5s ease infinite;
         }
         .whatsapp-float {
             background-color: #25D366;
             color: white;
-            font-size: 28px;
-            animation: shake 1.5s ease infinite;
+            font-size: 26px;
         }
         .whatsapp-float:hover {
             transform: scale(1.1);
@@ -166,7 +235,8 @@
         .facebook-float {
             background-color: #1877F2;
             color: white;
-            font-size: 24px;
+            font-size: 22px;
+            animation-delay: 0.2s; /* حركة متناغمة مع تأخير */
         }
         .facebook-float:hover {
             transform: scale(1.1);
@@ -215,6 +285,8 @@
             background: linear-gradient(135deg, #eef7f8 0%, #ffffff 100%);
             padding: 80px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
         .hero h2 {
             font-size: 48px;
@@ -377,7 +449,7 @@
             background: var(--primary);
             color: white;
             text-align: center;
-            padding: 40px 20px;
+            padding: 30px 20px;
         }
         .social-links a {
             color: white;
@@ -395,8 +467,10 @@
             .hero h2 { font-size: 32px; }
             .about-content { grid-template-columns: 1fr; }
             .header { flex-direction: column; text-align: center; gap: 15px; }
-            .float-btn { width: 45px; height: 45px; font-size: 22px; }
+            .float-btn { width: 40px; height: 40px; font-size: 20px; }
             .scroll-top { width: 40px; height: 40px; }
+            .nav-links { gap: 20px; }
+            .nav-links a { font-size: 16px; }
         }
     </style>
     <!-- Structured Data for SEO -->
@@ -428,6 +502,17 @@
     </div>
 </div>
 
+<!-- شريط التنقل الجديد -->
+<div class="navbar" id="navbar">
+    <div class="container">
+        <ul class="nav-links">
+            <li><a href="#hero">الرئيسية</a></li>
+            <li><a href="#services">الأنشطة</a></li>
+            <li><a href="#contact">التسجيل</a></li>
+        </ul>
+    </div>
+</div>
+
 <div class="container">
     <div class="header">
         <div class="logo">
@@ -441,7 +526,10 @@
     </div>
 </div>
 
-<section class="hero">
+<!-- قسم الفقاعات المتحركة -->
+<div class="bubbles" id="bubblesContainer"></div>
+
+<section id="hero" class="hero">
     <div class="container">
         <div class="hero-badge">نشاط صيفي 2026</div>
         <h2>نشاط صيفي ممتع ومفيد!</h2>
@@ -450,7 +538,7 @@
     </div>
 </section>
 
-<section class="services">
+<section id="services" class="services">
     <div class="container">
         <h2 class="section-title">خدماتنا المميزة</h2>
         <div class="services-grid">
@@ -482,11 +570,9 @@
     <div class="container">
         <h2 class="section-title">الجدول الأسبوعي</h2>
         <div class="schedule-grid">
-            <div class="schedule-day"><div class="day-name">اليوم الأول</div><div class="schedule-time">12:00</div><div>تحفيظ القرآن</div></div>
-            <div class="schedule-day"><div class="day-name">اليوم الثاني</div><div class="schedule-time">12:00</div><div>تحفيظ القرآن</div></div>
-            <div class="schedule-day"><div class="day-name">اليوم الثالث</div><div class="schedule-time">12:00</div><div>تحفيظ القرآن</div></div>
-            <div class="schedule-day"><div class="day-name">الرسم والفنون</div><div class="schedule-time">12:00</div><div>مهارات فنية</div></div>
-            <div class="schedule-day"><div class="day-name">أساسيات الكمبيوتر</div><div class="schedule-time">12:00</div><div>برامج وتقنية</div></div>
+            <div class="schedule-day"><div class="day-name">اليوم الأول</div><div class="schedule-time">start from  12:00pm</div><div> المهارة الأولى : قرآن - المهارة الثانية : رسم وفنون  </div></div>
+            <div class="schedule-day"><div class="day-name">اليوم الثاني</div><div class="schedule-time">يبدأ من 12:00pm</div><div>الأولى : قرآن + الثانية : كومبيوتر </div></div>
+            <div class="schedule-day"><div class="day-name">اليوم الثالث</div><div class="schedule-time">12:00pm</div><div>قرآن && English reading and phonics </div></div>
         </div>
     </div>
 </section>
@@ -501,7 +587,7 @@
                     <li><i class="fas fa-check-circle"></i> معلمون متخصصون وخبرة تربوية</li>
                     <li><i class="fas fa-check-circle"></i> جداول مرنة تناسب الأسر</li>
                     <li><i class="fas fa-check-circle"></i> تقارير أسبوعية لأولياء الأمور</li>
-                    <li><i class="fas fa-check-circle"></i> شهادات إتمام معتمدة 2026</li>
+                    <li><i class="fas fa-check-circle"></i> شهادات إتمام 2026</li>
                 </ul>
             </div>
             <div>
@@ -560,7 +646,6 @@
             <a href="https://www.facebook.com/AlbayanSchool2019/" target="_blank"><i class="fab fa-facebook-f"></i></a>
             <a href="https://wa.me/966591010329" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
-        <!-- <p style="margin-top: 15px;">للتواصل عبر الواتساب: 0591010329</p> -->
         <p>© 2026 أكاديمية البيان . جميع الحقوق محفوظة.</p>
     </div>
 </footer>
@@ -571,6 +656,27 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-GMZPPP5XTW');
+
+  // إنشاء الفقاعات الديناميكية
+  function createBubbles() {
+      const bubblesContainer = document.getElementById('bubblesContainer');
+      const colors = ['#11ABB1', '#EDB519', '#898B98', '#5bc0be', '#f4c542'];
+      const numBubbles = 25;
+      for (let i = 0; i < numBubbles; i++) {
+          const bubble = document.createElement('div');
+          bubble.classList.add('bubble');
+          const size = Math.random() * 60 + 20; // 20px to 80px
+          bubble.style.width = `${size}px`;
+          bubble.style.height = `${size}px`;
+          bubble.style.left = `${Math.random() * 100}%`;
+          bubble.style.animationDuration = `${Math.random() * 8 + 4}s`; // 4-12 seconds
+          bubble.style.animationDelay = `${Math.random() * 5}s`;
+          bubble.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+          bubble.style.opacity = Math.random() * 0.4 + 0.2;
+          bubblesContainer.appendChild(bubble);
+      }
+  }
+  createBubbles();
 
   // إرسال بيانات النموذج إلى الواتساب
   document.getElementById('sendWhatsAppBtn').addEventListener('click', function() {
@@ -609,6 +715,13 @@
           scrollBtn.classList.add('show');
       } else {
           scrollBtn.classList.remove('show');
+      }
+      // تغيير خلفية النافبار عند التمرير
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+      } else {
+          navbar.classList.remove('scrolled');
       }
   });
   scrollBtn.addEventListener('click', (e) => {
