@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكاديمية البيان أون لاين | النشاط الصيفي</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', 'Cairo', sans-serif;
+            background-color: #F9F6F0;
+            color: #2C3E50;
+            line-height: 1.6;
+        }
+
+        /* تنسيق الشريط العلوي */
+        .top-bar {
+            background-color: #1A3B5C;
+            color: #fff;
+            padding: 12px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* تنسيق الهيدر */
+        .header {
+            padding: 20px 0;
+            border-bottom: 2px solid #D4AF37;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo h1 {
+            color: #1A3B5C;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #D4AF37;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        .contact-info i {
+            margin-left: 5px;
+            color: #D4AF37;
+        }
+
+        /* تنسيق الأزرار */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #D4AF37;
+            color: #1A3B5C;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #b38f2a;
+            transform: translateY(-2px);
+        }
+
+        /* قسم البطل Hero */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #F9F6F0 0%, #f0e9df 100%);
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            color: #1A3B5C;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-highlight {
+            background: #D4AF37;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+
+        /* قسم الخدمات - بطاقات */
+        .services {
+            padding: 80px 0;
+            background: #fff;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            color: #1A3B5C;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #D4AF37;
+            margin: 15px auto 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: #F9F6F0;
+            padding: 40px 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-bottom-color: #D4AF37;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .service-card i {
+            font-size: 50px;
+            color: #D4AF37;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #1A3B5C;
+        }
+
+        /* قسم الجدول الزمني */
+        .schedule {
+            padding: 80px 0;
+            background: #1A3B5C;
+            color: #fff;
+        }
+
+        .schedule .section-title {
+            color: #fff;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .schedule-day {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .schedule-day .day-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #D4AF37;
+            margin-bottom: 10px;
+        }
+
+        .schedule-time {
+            font-size: 18px;
+            direction: ltr;
+            font-weight: bold;
+        }
+
+        /* قسم من نحن */
+        .about {
+            padding: 80px 0;
+            background: #fff;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 28px;
+            color: #1A3B5C;
+            margin-bottom: 20px;
+        }
+
+        .about-text ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .about-text li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .about-text li i {
+            color: #D4AF37;
+        }
+
+        /* نموذج التواصل */
+        .contact {
+            padding: 80px 0;
+            background: #F9F6F0;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            height: 100px;
+        }
+
+        /* الفوتر */
+        .footer {
+            background: #1A3B5C;
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .social-links {
+            margin-bottom: 15px;
+        }
+
+        .social-links a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 20px;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #D4AF37;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 32px; }
+            .about-content { grid-template-columns: 1fr; }
+            .header { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الشريط العلوي -->
+    <div class="top-bar">
+        <div class="container">
+            <i class="fas fa-calendar-alt"></i> انطلق النشاط الصيفي الممتع والمفيد للطلاب من الروضة حتى الإعدادي
+        </div>
+    </div>
+
+    <!-- الهيدر -->
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <h1>أكاديمية <span>البيان</span> أون لاين</h1>
+            </div>
+            <div class="contact-info">
+                <div><i class="fas fa-phone"></i> 0591010329</div>
+                <div><i class="fab fa-whatsapp"></i> واتساب</div>
+                <div><i class="fas fa-envelope"></i> info@albayan.com</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- قسم البطل Hero -->
+    <section class="hero">
+        <div class="container">
+            <span class="hero-highlight">نشاط صيفي 2025</span>
+            <h2>نشاط صيفي ممتع ومفيد!</h2>
+            <p>في أكاديمية البيان أون لاين، نقدم برنامجاً متكاملاً يجمع بين المتعة والفائدة لبناء جيل واعٍ ومبدع.</p>
+            <a href="#contact" class="btn">سجل الآن</a>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">خدماتنا المميزة</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-quran"></i>
+                    <h3>تحفيظ قرآن كريم</h3>
+                    <p>برامج تحفيظ متقنة بأحدث الطرق التربوية مع متابعة فردية.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>تعليم مبادئ الكمبيوتر</h3>
+                    <p>أساسيات الحاسوب، البرامج المكتبية، ومهارات العصر الرقمي.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>تعليم رسم وفنون</h3>
+                    <p>تنمية المهارات الإبداعية والفنية لدى الطلاب.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Reading English</h3>
+                    <p>تعليم القراءة باللغة الإنجليزية بأسلوب مبسط وممتع.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الجدول الزمني -->
+    <section class="schedule">
+        <div class="container">
+            <h2 class="section-title">الجدول الزمني الأسبوعي</h2>
+            <div class="schedule-grid">
+                <div class="schedule-day">
+                    <div class="day-name">اليوم الأول</div>
+                    <div class="schedule-time">12:00</div>
+                    <div>تحفيظ القرآن</div>
+                </div>
+                <div class="schedule-day">
+                    <div class="day-name">اليوم الثاني</div>
+                    <div class="schedule-time">12:00</div>
+                    <div>تحفيظ القرآن</div>
+                </div>
+                <div class="schedule-day">
+                    <div class="day-name">اليوم الثالث</div>
+                    <div class="schedule-time">12:00</div>
+                    <div>تحفيظ القرآن</div>
+                </div>
+                <div class="schedule-day">
+                    <div class="day-name">الرسم والفنون</div>
+                    <div class="schedule-time">12:00</div>
+                    <div>مهارات فنية</div>
+                </div>
+                <div class="schedule-day">
+                    <div class="day-name">أساسيات الكمبيوتر</div>
+                    <div class="schedule-time">12:00</div>
+                    <div>برامج وتقنية</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم من نحن -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>لماذا أكاديمية البيان أون لاين؟</h3>
+                    <p>نحن نقدم بيئة تعليمية متميزة تجمع بين الأصالة والمعاصرة، لتنشئة جيل متوازن علمياً وخلقياً.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> كوادر تعليمية مؤهلة وذات خبرة</li>
+                        <li><i class="fas fa-check-circle"></i> جداول مرنة تناسب جميع الأوقات</li>
+                        <li><i class="fas fa-check-circle"></i> تقارير متابعة دورية لأولياء الأمور</li>
+                        <li><i class="fas fa-check-circle"></i> شهادات إتمام معتمدة</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <!-- يمكنك استبدال الرابط التالي بصورة تعليمية من اختيارك -->
+                    <img src="https://placehold.co/500x400/F9F6F0/1A3B5C?text=أكاديمية+البيان" alt="أكاديمية البيان" style="width:100%; border-radius:15px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- نموذج التواصل -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">سجل ابنك الآن</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" placeholder="الاسم الكامل" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="رقم الجوال" required>
+                </div>
+                <div class="form-group">
+                    <select>
+                        <option>المرحلة العمرية: الروضة</option>
+                        <option>المرحلة العمرية: الابتدائي</option>
+                        <option>المرحلة العمرية: الإعدادي</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="ملاحظات إضافية (اختياري)"></textarea>
+                </div>
+                <div style="text-align: center;">
+                    <button type="submit" class="btn">إرسال طلب التسجيل</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>تابعونا: 0591010329 | موقعنا: Albayan School | جميع الحقوق محفوظة © أكاديمية البيان 2026</p>
+        </div>
+    </footer>
+
+</body>
+</html>
