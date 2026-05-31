@@ -77,75 +77,82 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            z-index: 0;
+            z-index: 1;
             pointer-events: none;
         }
         .bubble {
             position: absolute;
-            bottom: -50px;
-            background: rgba(17, 171, 177, 0.3);
+            bottom: -80px;
+            background: rgba(17, 171, 177, 0.25);
             border-radius: 50%;
-            animation: floatUp linear infinite;
-            opacity: 0.6;
+            animation: floatUpSlow linear infinite;
+            opacity: 0.5;
         }
-        @keyframes floatUp {
+        @keyframes floatUpSlow {
             0% {
-                transform: translateY(0) scale(0.8);
-                opacity: 0.6;
+                transform: translateY(0) scale(0.6);
+                opacity: 0;
             }
+            20% { opacity: 0.4; }
+            80% { opacity: 0.3; }
             100% {
-                transform: translateY(-100vh) scale(1.2);
+                transform: translateY(-120vh) scale(1.3);
                 opacity: 0;
             }
         }
 
-        .top-bar {
+        /* الشريط الموحد (دمج العلوي + النافبار) */
+        .unified-bar {
             background-color: var(--primary);
             color: white;
-            padding: 10px 0;
-            text-align: center;
-            font-weight: 500;
-            position: relative;
-            z-index: 2;
-        }
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 0 20px;
-        }
-        /* الشريط العلوي (Navbar) */
-        .navbar {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
-            z-index: 101;
-            transition: all 0.3s ease;
+            z-index: 102;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        .navbar.scrolled {
-            background: rgba(255,255,255,0.95);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        .unified-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .announcement {
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin: auto !important;
+            text-align: center ;
         }
         .nav-links {
             display: flex;
-            justify-content: center;
-            gap: 40px;
-            padding: 15px 0;
+            gap: 30px;
             list-style: none;
         }
         .nav-links a {
             text-decoration: none;
-            color: var(--primary);
+            color: var(--accent);
             font-weight: 600;
-            font-size: 18px;
+            font-size: 16px;
             transition: all 0.3s ease;
-            padding: 5px 10px;
+            padding: 5px 8px;
             border-radius: 30px;
         }
         .nav-links a:hover {
             color: var(--secondary);
-            background: rgba(237,181,25,0.1);
+            background: rgba(255,255,255,0.2);
             transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
         }
         .header {
             display: flex;
@@ -156,7 +163,7 @@
             border-bottom: 2px solid var(--secondary);
             position: relative;
             z-index: 2;
-            background: white;
+            background: rgb(255, 255, 255);
         }
         .logo img {
             display: inline-block;
@@ -186,7 +193,7 @@
         }
         .btn {
             background: var(--secondary);
-            color: #1e2a3a;
+            color: #1e2a3a !important;
             padding: 12px 30px;
             border-radius: 40px;
             text-decoration: none;
@@ -236,14 +243,13 @@
             background-color: #1877F2;
             color: white;
             font-size: 22px;
-            animation-delay: 0.2s; /* حركة متناغمة مع تأخير */
+            animation-delay: 0.2s;
         }
         .facebook-float:hover {
             transform: scale(1.1);
             background-color: #0e5ac0;
         }
-        /* زر العودة للأعلى */
-        .scroll-top {
+         .scroll-top {
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -287,6 +293,10 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+        }
+        .hero .container {
+            position: relative;
+            z-index: 2;
         }
         .hero h2 {
             font-size: 48px;
@@ -366,32 +376,52 @@
         }
         .schedule-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 25px;
-            text-align: center;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
         .schedule-day {
             background: white;
             padding: 25px;
-            border-radius: 16px;
+            border-radius: 20px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
+            text-align: center;
         }
         .schedule-day:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
-        .schedule-day .day-name {
+        .day-name {
             font-weight: 800;
             color: var(--primary);
-            font-size: 20px;
-            margin-bottom: 8px;
+            font-size: 24px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            display: inline-block;
+            padding-bottom: 5px;
         }
         .schedule-time {
             font-size: 18px;
             font-weight: bold;
             color: var(--secondary);
+            margin: 15px 0;
             direction: ltr;
+        }
+        .activities-list {
+            text-align: right;
+            padding-right: 20px;
+            margin-top: 15px;
+        }
+        .activities-list li {
+            margin-bottom: 8px;
+            list-style-type: none;
+            position: relative;
+        }
+        .activities-list li::before {
+            content: "⭐";
+            position: absolute;
+            right: -20px;
+            color: var(--secondary);
         }
         .about {
             padding: 80px 0;
@@ -416,7 +446,6 @@
         .about-text li i {
             color: var(--primary);
         }
-        /* نموذج التسجيل الفعال */
         .contact {
             padding: 80px 0;
             background: var(--light-bg);
@@ -445,22 +474,33 @@
             outline: none;
             box-shadow: 0 0 0 3px rgba(17,171,177,0.2);
         }
-        .footer {
+        
+         .footer {
             background: var(--primary);
             color: white;
+        }
+        .social-bar {
+            background-color: var(--light-bg);  
+            padding: 10px 0;
             text-align: center;
-            padding: 30px 20px;
+            border: 1px solid var(--secondary);
         }
         .social-links a {
-            color: white;
-            margin: 0 12px;
-            font-size: 22px;
+            color: var(--primary);
+            margin: 0 15px;
+            font-size: 24px;
             display: inline-block;
             transition: all 0.3s ease;
         }
         .social-links a:hover {
             color: var(--secondary);
             transform: translateY(-3px);
+        }
+        .copyright {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            background-color: var(--primary);
         }
 
         @media (max-width: 768px) {
@@ -469,8 +509,9 @@
             .header { flex-direction: column; text-align: center; gap: 15px; }
             .float-btn { width: 40px; height: 40px; font-size: 20px; }
             .scroll-top { width: 40px; height: 40px; }
-            .nav-links { gap: 20px; }
-            .nav-links a { font-size: 16px; }
+            .unified-container { flex-direction: column; text-align: center; }
+            .nav-links { justify-content: center; }
+            .schedule-grid { grid-template-columns: 1fr; }
         }
     </style>
     <!-- Structured Data for SEO -->
@@ -496,20 +537,12 @@
 </head>
 <body>
 
-<div class="top-bar">
-    <div class="container">
-        <i class="fas fa-star-of-life"></i> انطلق النشاط الصيفي 2026 - للطلاب من الروضة حتى الإعدادي
-    </div>
-</div>
-
-<!-- شريط التنقل الجديد -->
-<div class="navbar" id="navbar">
-    <div class="container">
-        <ul class="nav-links">
-            <li><a href="#hero">الرئيسية</a></li>
-            <li><a href="#services">الأنشطة</a></li>
-            <li><a href="#contact">التسجيل</a></li>
-        </ul>
+<!-- الشريط الموحد (دمج الإعلان + روابط التنقل) -->
+<div class="unified-bar">
+    <div class="unified-container">
+        <div class="announcement">
+            <i class="fas fa-star-of-life"></i> انطلق النشاط الصيفي 2026 - للطلاب من الروضة حتى الإعدادي
+        </div>
     </div>
 </div>
 
@@ -519,6 +552,13 @@
             <img src="./img/logo-removebg-preview.png" alt="logo">
             <h1>أكاديمية <span>البيان</span></h1>
         </div>
+        <div>
+            <ul class="nav-links">
+                <li><a href="#hero">الرئيسية</a></li>
+                <li><a href="#services">الأنشطة</a></li>
+                <li><a href="#contact">التسجيل</a></li>
+            </ul>
+        </div>
         <div class="contact-info">
             <div><a href="https://www.facebook.com/AlbayanSchool2019/" target="_blank"><i class="fab fa-facebook-f"></i></a></div>
             <div><i class="fab fa-whatsapp"></i> واتساب: 0591010329</div>
@@ -526,10 +566,8 @@
     </div>
 </div>
 
-<!-- قسم الفقاعات المتحركة -->
-<div class="bubbles" id="bubblesContainer"></div>
-
 <section id="hero" class="hero">
+    <div class="bubbles" id="bubblesContainer"></div>
     <div class="container">
         <div class="hero-badge">نشاط صيفي 2026</div>
         <h2>نشاط صيفي ممتع ومفيد!</h2>
@@ -566,13 +604,35 @@
     </div>
 </section>
 
+<!-- الجدول الأسبوعي بتنسيق أفضل -->
 <section class="schedule">
     <div class="container">
         <h2 class="section-title">الجدول الأسبوعي</h2>
         <div class="schedule-grid">
-            <div class="schedule-day"><div class="day-name">اليوم الأول</div><div class="schedule-time">start from  12:00pm</div><div> المهارة الأولى : قرآن - المهارة الثانية : رسم وفنون  </div></div>
-            <div class="schedule-day"><div class="day-name">اليوم الثاني</div><div class="schedule-time">يبدأ من 12:00pm</div><div>الأولى : قرآن + الثانية : كومبيوتر </div></div>
-            <div class="schedule-day"><div class="day-name">اليوم الثالث</div><div class="schedule-time">12:00pm</div><div>قرآن && English reading and phonics </div></div>
+            <div class="schedule-day">
+                <div class="day-name">اليوم الأول</div>
+                <div class="schedule-time">  يبدأ من 12:00 ظهراً</div>
+                <ul class="activities-list">
+                    <li> تحفيظ القرآن الكريم</li>
+                    <li>🎨 الرسم والفنون</li>
+                </ul>
+            </div>
+            <div class="schedule-day">
+                <div class="day-name">اليوم الثاني</div>
+                <div class="schedule-time">  يبدأ من 12:00 ظهراً</div>
+                <ul class="activities-list">
+                    <li>  تحفيظ القرآن الكريم</li>
+                    <li>💻 مبادئ الكمبيوتر</li>
+                </ul>
+            </div>
+            <div class="schedule-day">
+                <div class="day-name">اليوم الثالث</div>
+                <div class="schedule-time">  يبدأ من 12:00 ظهراً</div>
+                <ul class="activities-list">
+                    <li> تحفيظ القرآن الكريم</li>
+                    <li>📚 Reading English & Phonics</li>
+                </ul>
+            </div>
         </div>
     </div>
 </section>
@@ -597,7 +657,7 @@
     </div>
 </section>
 
-<!-- نموذج التسجيل الفعال (يرسل البيانات إلى الواتساب) -->
+<!-- نموذج التسجيل الفعال -->
 <section id="contact" class="contact">
     <div class="container">
         <h2 class="section-title">سجل ابنك/ابنتك الآن</h2>
@@ -625,7 +685,7 @@
     </div>
 </section>
 
-<!-- الأزرار العائمة: فيسبوك فوق الواتساب على اليسار -->
+<!-- الأزرار العائمة -->
 <div class="float-group">
     <a href="https://www.facebook.com/AlbayanSchool2019/" class="float-btn facebook-float" target="_blank">
         <i class="fab fa-facebook-f"></i>
@@ -640,12 +700,15 @@
     <i class="fas fa-arrow-up"></i>
 </a>
 
+<!-- الفوتر الجديد: شريط سوشال ميديا منفصل بلون مختلف -->
 <footer class="footer">
-    <div class="container">
+    <div class="social-bar">
         <div class="social-links">
             <a href="https://www.facebook.com/AlbayanSchool2019/" target="_blank"><i class="fab fa-facebook-f"></i></a>
             <a href="https://wa.me/966591010329" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
+    </div>
+    <div class="copyright">
         <p>© 2026 أكاديمية البيان . جميع الحقوق محفوظة.</p>
     </div>
 </footer>
@@ -657,28 +720,28 @@
   gtag('js', new Date());
   gtag('config', 'G-GMZPPP5XTW');
 
-  // إنشاء الفقاعات الديناميكية
+  // إنشاء الفقاعات
   function createBubbles() {
       const bubblesContainer = document.getElementById('bubblesContainer');
       const colors = ['#11ABB1', '#EDB519', '#898B98', '#5bc0be', '#f4c542'];
-      const numBubbles = 25;
+      const numBubbles = 20;
       for (let i = 0; i < numBubbles; i++) {
           const bubble = document.createElement('div');
           bubble.classList.add('bubble');
-          const size = Math.random() * 60 + 20; // 20px to 80px
+          const size = Math.random() * 70 + 25;
           bubble.style.width = `${size}px`;
           bubble.style.height = `${size}px`;
           bubble.style.left = `${Math.random() * 100}%`;
-          bubble.style.animationDuration = `${Math.random() * 8 + 4}s`; // 4-12 seconds
-          bubble.style.animationDelay = `${Math.random() * 5}s`;
+          bubble.style.animationDuration = `${Math.random() * 15 + 12}s`;
+          bubble.style.animationDelay = `${Math.random() * 8}s`;
           bubble.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-          bubble.style.opacity = Math.random() * 0.4 + 0.2;
+          bubble.style.opacity = Math.random() * 0.25 + 0.1;
           bubblesContainer.appendChild(bubble);
       }
   }
   createBubbles();
 
-  // إرسال بيانات النموذج إلى الواتساب
+  // إرسال النموذج للواتساب
   document.getElementById('sendWhatsAppBtn').addEventListener('click', function() {
       const studentName = document.getElementById('studentName').value.trim();
       const parentPhone = document.getElementById('parentPhone').value.trim();
@@ -715,13 +778,6 @@
           scrollBtn.classList.add('show');
       } else {
           scrollBtn.classList.remove('show');
-      }
-      // تغيير خلفية النافبار عند التمرير
-      const navbar = document.getElementById('navbar');
-      if (window.scrollY > 50) {
-          navbar.classList.add('scrolled');
-      } else {
-          navbar.classList.remove('scrolled');
       }
   });
   scrollBtn.addEventListener('click', (e) => {
